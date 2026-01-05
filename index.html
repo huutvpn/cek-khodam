@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Cek Khodam Nama Manusia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#0f0f2d,#1f1f3f);
+  color:#fff;
+  text-align:center;
+  padding:40px;
+}
+.box{
+  max-width:520px;
+  margin:auto;
+  background:rgba(0,0,0,.45);
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 0 25px rgba(0,0,0,.6);
+}
+input{
+  width:90%;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
+}
+button{
+  margin-top:15px;
+  padding:12px 28px;
+  border:none;
+  border-radius:10px;
+  background:#ff9800;
+  font-weight:bold;
+  cursor:pointer;
+}
+button:hover{background:#ffc107}
+#hasil{margin-top:20px;font-size:18px}
+.khodam{font-size:26px;color:#ffeb3b}
+.arti{
+  margin-top:15px;
+  background:rgba(255,255,255,.08);
+  padding:15px;
+  border-radius:12px;
+  text-align:left;
+  font-size:14px;
+}
+.footer{margin-top:20px;font-size:12px;opacity:.8}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h1>🔮 Cek Khodam Nama</h1>
+<p>Masukkan nama manusia</p>
+
+<input type="text" id="nama" placeholder="Contoh: Ahmad">
+<br>
+<button onclick="cekKhodam()">Cek Khodam</button>
+
+<div id="hasil"></div>
+
+<div class="footer">
+⚠️ Hiburan & simbol budaya, bukan keyakinan.
+</div>
+</div>
+
+<script>
+const khodamData = [
+ {nama:"Cakcak", arti:"Melambangkan kelincahan, kepekaan, dan kemampuan beradaptasi."},
+ {nama:"Suluh", arti:"Simbol penerang, petunjuk, dan kebijaksanaan."},
+ {nama:"Boncel", arti:"Kesederhanaan, rendah hati, dan apa adanya."},
+ {nama:"Pincang", arti:"Ketahanan hidup dan semangat bangkit."},
+ {nama:"Kuraban", arti:"Keberanian menghadapi tekanan dan tantangan."},
+ {nama:"Gayung Bontot", arti:"Kesabaran, pengabdian, dan pendukung yang setia."},
+ {nama:"Petot", arti:"Keunikan, humor, dan pembawa suasana."},
+ {nama:"Kekenceng", arti:"Tekad kuat dan konsistensi."},
+ {nama:"Gayung Sinduk", arti:"Keseimbangan dan kehati-hatian."},
+ {nama:"Kolaci", arti:"Kehangatan dan sifat sosial."},
+ {nama:"Pariuk", arti:"Rezeki, tanggung jawab, dan peran keluarga."},
+ {nama:"Panci", arti:"Kesabaran dalam proses dan kesiapan menampung."},
+ {nama:"Nyeuru", arti:"Ketahanan batin dan kekuatan jiwa."},
+ {nama:"Maung", arti:"Wibawa, kepemimpinan, dan keberanian."},
+ {nama:"Singa", arti:"Kekuatan, pelindung, dan percaya diri."},
+ {nama:"Simeut", arti:"Kerja keras dan ketekunan."},
+ {nama:"Cileuh", arti:"Kewaspadaan dan naluri bertahan."},
+ {nama:"Pocong", arti:"Pengingat hidup dan refleksi diri."},
+ {nama:"Hapuran", arti:"Pembersihan dan awal baru."},
+ {nama:"Ranginang", arti:"Kesederhanaan dan kegigihan."},
+ {nama:"Dapros", arti:"Keberanian bicara dan kejujuran."},
+ {nama:"Opak", arti:"Keteguhan tradisi dan kestabilan."},
+ {nama:"Kadal", arti:"Adaptasi cepat dan kecerdikan."},
+ {nama:"Meong", arti:"Kemandirian, kepekaan, dan insting kuat."},
+ {nama:"Munding", arti:"Kesabaran, kekuatan, dan ketekunan."},
+ {nama:"Macan Tutul", arti:"Kecepatan, strategi, dan kekuatan tersembunyi."}
+];
+
+function cekKhodam(){
+ const nama=document.getElementById("nama").value.trim();
+ const hasil=document.getElementById("hasil");
+ if(nama===""){
+   hasil.innerHTML="⚠️ Masukkan nama terlebih dahulu";
+   return;
+ }
+ let hash=0;
+ for(let i=0;i<nama.length;i++){
+   hash+=nama.charCodeAt(i)*(i+1);
+ }
+ const data=khodamData[hash%khodamData.length];
+ hasil.innerHTML=`
+ ✨ Nama: <b>${nama}</b><br>
+ Khodam Pendamping:<br>
+ <span class="khodam">${data.nama}</span>
+ <div class="arti"><b>Makna:</b><br>${data.arti}</div>`;
+}
+</script>
+
+</body>
+</html>
